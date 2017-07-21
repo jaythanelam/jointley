@@ -1,4 +1,4 @@
 ---
-title: home
+title: index
 layout: index
 ---
