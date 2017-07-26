@@ -126,10 +126,10 @@
 
 body {
   margin: 0;
-  font-family: Moriston Personal, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: Moriston Personal, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   background: #F2F2F2;
 }
-body &.disabled {
+body .disabled {
   overflow: hidden; /* disable scrolling */
 }
 
@@ -156,131 +156,46 @@ body &.disabled {
 .header {
   background-color: transparent;
   font-size: 0;
-  height: 26px;
-  transition: opacity 400ms ease, background-color 600ms ease;
+  transition: opacity 400ms ease;
+  background-color 600ms ease;
   width: 100%;
   z-index: 8;
   transform: translate3d(0px, 0px, 0px);
+  margin-top: 20px;
 }
 
 .logoWrap {
-  background-image: url('{{ "/assets/img/logo-75opacity.svg" | prepend: site.baseurl }}');
-  background-repeat: no-repeat;
-  background-position: top left;
   display: inline-block;
+  height: 46px;
+  width: 46px;
+  padding: 10px;
 }
 
-.logoWrap a {
-  height: 26px;
-  width: 26px;
-  margin: 0;
-  padding: 0;
-}
-
-/* styling of hamburger menu */
-.hamburger-menu {
-  display: inline-block;
-  height: 26px;
-  padding: 0px 0px;
-  transition: all 0.3s ease-in-out;
-  position: fixed;
-  top: 0;
-  right: 0;
-}
-
-.hamburger-menu &:hover {
-  cursor: pointer;
-}
-
-.menu-item {
-  background: rgba(0,0,0,.75);
-  display: block;
-  height: 2px;
-  margin: 0 0 15px;
-  transition: all 0.3s ease-in-out;
-  width: 25px;
-}
-
-.menu-item &.open {
-}
-
-.menu-item {
-  margin: 0 0 5px;
-}
-
-&:first-child {
-  transform: rotate(45deg);
-  transform-origin: 10px;
-}
-
-&:nth-child(2) {
-  opacity: 0;
-}
-
-&:nth-child(3) {
-  transform: rotate(-45deg);
-  transform-origin: 8px;
-}
-
-/* nav styles */
-.mobile-nav-wrap {
-  @media (min-width: 769px) {
-    /* display: none; */
-  }
-}
-
-/* fixed mobile nav styling */
-.mobile-nav-wrap {
-  background-color: #007AFF;
-  height: 100%;
-  left: 0;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1;
-}
-
-.fixed-mobile-nav {
-  list-style: none;
-  margin: 50px 0 0;
-  padding: 0;
-}
-
-li {
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  margin-left: 50px;
-  width: 50%;
-}
-
-a {
-  color: white;
-  display: block;
-  font-size: 24px;
-  padding: 25px 0;
-  text-decoration: none;
+.logoWrap :hover {
+  fill: #007AFF;
 }
 
 main {
   background: #F2F2F2;
   height: 100%;
-  padding-top: 200px;
-  padding-bottom: 200px;
+  padding: 200px 20px 300px 10px;
 }
 
 main h1,
 main h2 {
   margin: 0 auto;
   width: 700px;
-  text-align: center;
+  text-align: left;
   color: #cedfe9;
-  line-height: 1;
+  line-height: 1.15;
 }
 
 main h1 {
+  font-weight: 500;
   position: relative;
   padding-bottom: 0.5em;
   color: #27262C;
-  font-size: 1rem;
+  font-size: 2.4rem;
 }
 
 main h2 {
@@ -291,7 +206,9 @@ main h2 {
 @media screen and (min-width: 750px) {
 
   main h1 {
-    font-size: 2rem;
+    font-size: 2.75rem;
+    width: 700px;
+    text-align: center;
   }
 
   main h2 {
@@ -304,7 +221,10 @@ main h2 {
 @media screen and (min-width: 1400px) {
 
   main h1 {
-    font-size: 2.75rem;
+    font-size: 3.25rem;
+    font-weight: 500;
+    width: 800px;
+    text-align: center;
   }
 
   main h2 {
@@ -318,13 +238,6 @@ main h2 {
   justify-content: center;
   align-items: center;
   height: 100%;
-}
-
-
-.grid .item:hover .diamond,
-.grid .item:focus .diamond {
-  box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
-  transform:  rotateZ(45deg) scale(1.2);
 }
 
 .grid .item {
@@ -360,3 +273,84 @@ main h2 {
 .grid .item:nth-child(12),
 .grid .item:nth-child(13),
 .grid .item:nth-child(14) { background-image: linear-gradient(45deg, #feeeab 0%, #fb7eb3 60%); }
+
+
+/* The Overlay (background) */
+.overlay {
+  /* Height & width depends on how you want to reveal the overlay (see JS below) */
+  height: 100%;
+  width: 0;
+  position: fixed; /* Stay in place */
+  z-index: 9; /* Sit on top */
+  left: 0;
+  top: 0;
+  background-color: #007AFF; /* Black fallback color */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+.overlay-logo a svg,
+.overlay-logo div svg {
+  margin-left: 35px;
+  margin-top: -23px;
+}
+
+/* Position the content inside the overlay */
+.overlay-content {
+  position: relative;
+  top: 25%; /* 25% from the top */
+  width: 100%; /* 100% width */
+  text-align: right; /* Centered text/links */
+  padding-right: 25px;
+}
+
+/* The navigation links inside the overlay */
+.overlay a {
+  text-decoration: none;
+  font-size: 2.5rem;
+  color: #fff;
+  display: block; /* Display block instead of inline */
+  transition: 0.3s; /* Transition effects on hover (color) */
+}
+
+/* When you mouse over the navigation links, change their color */
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+/* styling of hamburger menu */
+.menubtn {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin-right: 10px;
+  margin-top: -10px;
+  padding: 0;
+}
+
+/* Position the close button (top right corner) */
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 60px;
+    fill: currentColor;
+    color: #fff;
+}
+
+/* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+@media screen and (max-height: 450px) {
+    .overlay a {font-size: 20px}
+    .overlay .closebtn {
+        font-size: 40px;
+        top: 15px;
+        right: 35px;
+    }
+}
+
+
+.footer {
+    grid-area: "big1";
+    height: 200px;
+    background-color: yellow;
+}
