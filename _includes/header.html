@@ -1,5 +1,5 @@
-<header class="header">
-  <div class="logoWrap overlay-logo">
+<header class="header nav-up">
+  <div class="logoWrap">
     {% include logo.html %}
   </div>
   <div id="myNav" class="overlay">
@@ -25,4 +25,17 @@
     </span>
   </div>
 </header>
-  
+
+<script type="text/javascript">
+(function($) {
+    $(document).ready(function(){
+        $(window).scroll(function(){
+            if ($(this).scrollTop() > 200) {
+                $('header').fadeIn(500);
+            } else {
+                $('header').fadeOut(500);
+            }
+        });
+    });
+})(jQuery);
+</script>
