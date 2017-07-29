@@ -162,7 +162,7 @@ body .disabled {
   width: 100%;
   z-index: 8;
   transform: translate3d(0px, 0px, 0px);
-  margin-top: 75px;
+  margin-top: 25px;
   height: 46px;
   transition: top 0.2s ease-in-out;
   position: fixed;
@@ -273,8 +273,9 @@ hr {
     text-align: center;
   }
 
-  .overlay .closebtn svg {
+  #myNav .overlay .overlay-logo {
     border: 1px solid red;
+    margin-top: 25px;
   }
 
   .overlay-content {
@@ -351,13 +352,14 @@ hr {
   overflow-x: hidden; /* Disable horizontal scroll */
   -webkit-transition: all .5s ease-in-out;
           transition: all .5s ease-in-out;
+  padding-top: 10px;
 }
 
 .overlay-logo a svg,
 .overlay-logo div svg {
   text-decoration: none;
-  margin-left: 25px;
-  margin-top: 40px;
+  margin-left: 35px;
+  margin-top: 50px;
 }
 
 .overlay-logo a svg :hover {
@@ -376,7 +378,7 @@ hr {
 
 .overlay-content a {
   margin-bottom: 10px;
-  margin-right: 25px;
+  margin-right: 45px;
 }
 
 /* The navigation links inside the overlay */
@@ -408,10 +410,11 @@ hr {
   position: absolute;
   top: 0;
   right: 0;
-  margin-right: 35px;
+  margin-right: 65px;
   display: inline-block;
   height: 46px;
   width: 46px;
+  margin-top: 13px;
 }
 
 /* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
@@ -438,7 +441,6 @@ hr {
   }
 
   .menubtn svg {
-    border: 1px solid red;
   }
 }
 
